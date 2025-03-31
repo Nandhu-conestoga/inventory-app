@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="container py-4">
+
+    <h1 class="text-center mb-4">Inventory Management System</h1>
+
+    <!-- Navigation Buttons -->
+    <div class="d-flex justify-content-between mb-3">
+        <a href="/add" class="btn btn-outline-primary">Add New Item</a>
+        <a href="/sales" class="btn btn-outline-success">View Sales</a>
+        <a href="/sales/ledger" class="btn btn-outline-warning">View Ledger</a>
+    </div>
+
+    <!-- Inventory Table -->
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price ($)</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (items.length === 0) { %>
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No items found. Add new inventory!</td>
+                </tr>
+            <% } else { %>
+                <% items.forEach((item, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.quantity %></td>
+                        <td>$<%= item.price.toFixed(2) %></td>
+                        <td><%= item.description %></td>
+                        <td>
+                            <a href="/edit/<%= item.id %>" class="btn btn-warning btn-sm">Edit</a>
+                            <% if (item.quantity > 0) { %>
+                                <a href="/sell/<%= item.id %>" class="btn btn-info btn-sm">Sell</a>
+                            <% } else { %>
+                                <button class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                            <% } %>
+                            <form action="/delete/<%= item.id %>" method="POST" class="d-inline" onsubmit="return confirmDelete();">
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- Footer -->
+    <footer class="text-center mt-4 text-muted">
+        &copy; <%= new Date().getFullYear() %> Inventory Management System
+    </footer>
+
+    <!-- Confirmation for Delete -->
+    <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this item?');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

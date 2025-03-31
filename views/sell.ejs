@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Item</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="container py-4">
+
+    <h1 class="text-center mb-4">Sell Inventory Item</h1>
+
+    <!-- Back to Inventory Button -->
+    <div class="d-flex justify-content-between mb-3">
+        <a href="/" class="btn btn-secondary">Back to Inventory</a>
+        <a href="/sales" class="btn btn-success">View Sales</a>
+    </div>
+
+    <!-- Sell Item Form -->
+    <form action="/sell/<%= item.id %>" method="POST" class="border p-4 rounded shadow-sm bg-white">
+        <div class="mb-3">
+            <label class="form-label">Item Name</label>
+            <input type="text" class="form-control" value="<%= item.name %>" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Available Quantity</label>
+            <input type="number" class="form-control" value="<%= item.quantity %>" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Price Per Item ($)</label>
+            <input type="number" class="form-control" value="<%= item.price.toFixed(2) %>" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="quantitySold" class="form-label">Quantity to Sell</label>
+            <input type="number" name="quantitySold" id="quantitySold" class="form-control" min="1" max="<%= item.quantity %>" required>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="/" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-success">Sell Item</button>
+        </div>
+    </form>
+
+    <!-- Footer -->
+    <footer class="text-center mt-4 text-muted">
+        &copy; <%= new Date().getFullYear() %> Inventory Management System
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

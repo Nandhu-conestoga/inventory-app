@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Inventory Item</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="container py-4">
+
+    <h2 class="text-center mb-4"> Add New Inventory Item</h2>
+
+    <form action="/add" method="POST" class="border p-4 rounded shadow-sm bg-white">
+        <div class="mb-3">
+            <label for="name" class="form-label">Item Name</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" min="0" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price ($)</label>
+            <input type="number" name="price" id="price" step="0.01" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="/" class="btn btn-secondary"> Back</a>
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </form>
+
+    <footer class="text-center mt-4 text-muted">
+        &copy; <%= new Date().getFullYear() %> Nandhu Krishna Rajendran - Inventory System
+    </footer>
+</body>
+</html>
