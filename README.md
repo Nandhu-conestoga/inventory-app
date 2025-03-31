@@ -32,10 +32,32 @@ This is a full-stack Inventory Management System built with **Node.js**, **Expre
 ## Setup Instructions
 
 ### 1. Clone the repository:
-```bash
 git clone https://github.com/Nandhu-conestoga/inventory-app.git
 cd inventory-app
-**License**
 
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
- I chose the MIT License because it is simple and permissive, allowing anyone to freely use, modify, and distribute the code. It's widely used in open-source projects and ideal for educational and collaborative work like this.
+### 2. Install dependencies
+npm install
+
+### 3. Set up your environment variables
+DATABASE_URL=postgresql://neondb_owner:npg_Jzjm86xgbwFZ@ep-tiny-sunset-a8cu5iw7-pooler.eastus2.azure.neon.tech/neondb?sslmode=require
+
+### 4. Run database migrations 
+npx sequelize-cli db:migrate
+
+### 5. Start the server
+npm start
+
+Then open your browser
+
+---
+## LICENSE
+I chose the MIT License:
+I selected the MIT License because:
+
+* It is simple and permissive, allowing anyone to freely use, modify, and distribute the code.
+
+* It supports open-source collaboration and learning, which aligns with the educational goals of this project.
+
+* It is widely used and well-understood in the developer community, making it easy for others to adopt and contribute without legal complications.
+
+
