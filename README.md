@@ -35,3 +35,8 @@ This is a full-stack Inventory Management System built with **Node.js**, **Expre
 ```bash
 git clone https://github.com/YOUR_USERNAME/inventory-app.git
 cd inventory-app
+
+##  License
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
+ I chose the MIT License because it is simple and permissive, allowing anyone to freely use, modify, and distribute the code. It's widely used in open-source projects and ideal for educational and collaborative work like this.
